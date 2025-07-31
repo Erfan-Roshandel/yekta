@@ -27,7 +27,7 @@ An end-to-end machine learning system that automatically classifies emails into 
 ### Installation
 ```bash
 git clone https://github.com/Erfan-Roshandel/yekta.git
-cd email-classifier
+cd yekta
 
 # Using conda
 conda env create -f environment.yml
