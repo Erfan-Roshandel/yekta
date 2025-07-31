@@ -4,6 +4,10 @@ from pydantic import BaseModel
 from .model_loader import load_model
 from hazm import Normalizer
 import re
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).parent.parent))
 
 app = FastAPI(
     title="سیستم طبقه‌بندی ایمیل",
@@ -11,20 +15,17 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# بارگیری مدل هنگام راه‌اندازی سرویس
 model, label_map = load_model()
 
-# ساختار درخواست
 class EmailRequest(BaseModel):
     text: str
 
-# نرمال‌ساز متن
 normalizer = Normalizer()
 
 def preprocess_text(text: str) -> str:
     """پیش‌پردازش متن ایمیل"""
     text = normalizer.normalize(text)
-    text = re.sub(r'[^\w\s]', '', text)  # حذف علائم نگارشی
+    text = re.sub(r'[^\w\s]', '', text) 
     return text
 
 @app.post("/classify")
@@ -37,10 +38,8 @@ async def classify_email(request: EmailRequest):
         "text": "لطفا قیمت محصول X را اعلام کنید"
     }
     """
-    # پیش‌پردازش متن
     processed_text = preprocess_text(request.text)
     
-    # پیش‌بینی دسته
     prediction = model.predict([processed_text])[0]
     
     return {

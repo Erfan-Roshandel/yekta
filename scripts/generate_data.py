@@ -7,7 +7,6 @@ import os
 
 client = Client()
 
-# دسته‌بندی‌ها
 categories = [
     "support_complaint",  # پشتیبانی/شکایت مشتری
     "sales_inquiry",      # درخواست فروش/استعلام قیمت
@@ -15,7 +14,6 @@ categories = [
     "spam_ad"            # هرزنامه/تبلیغات
 ]
 
-# تمپلیت‌های پیشنهادی برای هر دسته
 templates = {
     categories[0]: [
         "شکایت در مورد {محصول} که خراب شده است",
@@ -61,10 +59,8 @@ def generate_email(category: str) -> str:
             f.write(f"{time.ctime()} - {str(e)}\n")
         return ""
 
-# ایجاد دایرکتوری برای ذخیره داده‌ها
 os.makedirs("data", exist_ok=True)
 
-# تولید 200 ایمیل برای هر دسته
 synthetic_data = []
 for category in categories:
     print(f"در حال تولید ایمیل‌های دسته {category}...")
@@ -91,13 +87,12 @@ for category in categories:
     synthetic_data.extend(category_emails)
     print(f"تولید ایمیل‌های دسته {category} تکمیل شد. تعداد: {len(category_emails)} ایمیل")
     
-    # ذخیره موقت با نام فایل انگلیسی
     temp_df = pd.DataFrame(synthetic_data)
     temp_filename = f"temp_{category}.csv"
     temp_df.to_csv(temp_filename, index=False, encoding='utf-8-sig')
     print(f"ذخیره موقت برای دسته {category} انجام شد")
 
-# ذخیره نهایی داده‌ها
+
 if synthetic_data:
     df = pd.DataFrame(synthetic_data)
     output_path = os.path.join("data", "synthetic_emails.csv")
@@ -106,7 +101,6 @@ if synthetic_data:
 else:
     print("هیچ داده‌ای برای ذخیره وجود ندارد")
 
-# ذخیره گزارش نهایی
 report = {
     "total_emails": len(synthetic_data),
     "categories": {cat: len([e for e in synthetic_data if e["label"] == cat]) for cat in categories},

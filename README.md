@@ -1,36 +1,38 @@
-# سیستم طبقه‌بندی خودکار ایمیل‌ها
+# Automated Email Classification System
 
-![Email Classification](https://img.shields.io/badge/status-active-success.svg)
-![Python](https://img.shields.io/badge/python-3.9%2B-blue)
-![ML](https://img.shields.io/badge/machine%20learning-Naive%20Bayes%7CSVM-orange)
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![ML](https://img.shields.io/badge/machine%20learning-Naive%20Bayes%7CSVM%7CTransformers-orange)
 ![API](https://img.shields.io/badge/API-FastAPI-brightgreen)
+![Status](https://img.shields.io/badge/status-production%20ready-success)
 
-این پروژه یک سیستم طبقه‌بندی خودکار ایمیل‌ها را با استفاده از تکنیک‌های یادگیری ماشین پیاده‌سازی می‌کند. سیستم قادر است ایمیل‌های دریافتی را در یکی از دسته‌های زیر طبقه‌بندی نماید:
+An end-to-end machine learning system that automatically classifies emails into predefined categories using both traditional ML and deep learning approaches.
 
-- پشتیبانی / شکایت مشتری
-- درخواست فروش / استعلام قیمت
-- همکاری / پیشنهاد شراکت
-- هرزنامه / تبلیغات
+## Categories
+- **Customer Support/Complaints**
+- **Sales Inquiries/Pricing**
+- **Partnership Proposals**
+- **Spam/Advertisements**
 
-## فهرست مطالب
+## Features
+- REST API with FastAPI
+- Docker/conda deployment options
+- Comprehensive evaluation metrics
 
-- [راه‌اندازی محلی](#راه‌اندازی-محلی)
-- [ساختار پروژه](#ساختار-پروژه)
-- [مراحل اجرا](#مراحل-اجرا)
-- [استفاده از API](#استفاده-از-api)
-- [ارزیابی مدل‌ها](#ارزیابی-مدل‌ها)
-- [بهبودهای آتی](#بهبودهای-آتی)
+## Quick Start
 
-## راه‌اندازی محلی
+### Prerequisites
+- Conda/Miniconda
+- Python 3.12
 
-### پیش‌نیازها
+### Installation
+```bash
+git clone https://github.com/Erfan-Roshandel/yekta.git
+cd email-classifier
 
-- Python 3.9 یا بالاتر
-- pip (مدیریت بسته‌های پایتون)
+# Using conda
+conda env create -f environment.yml
+conda activate email-classifier
 
-### نصب و راه‌اندازی
-
-1. کلون کردن مخزن:
-   ```bash
-   git clone https://github.com/yourusername/email-classifier.git
-   cd email-classifier
+# Or using Docker
+```bash
+./build_and_run.sh

@@ -1,0 +1,18 @@
+# environment.yml
+name: email-classifier
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - scikit-learn
+  - pandas
+  - joblib
+  - fastapi
+  - uvicorn
+  - python-multipart
+  - hazm
+  - pip
+  - pip:
+      - g4f
+      - nltk

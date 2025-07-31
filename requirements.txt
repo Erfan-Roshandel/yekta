@@ -1,4 +1,3 @@
-g4f
 fastapi
 uvicorn
 scikit-learn
@@ -6,3 +5,5 @@ pandas
 hazm
 joblib
 python-multipart
+g4f
+nltk
